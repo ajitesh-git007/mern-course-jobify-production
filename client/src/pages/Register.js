@@ -76,14 +76,39 @@ export default function Register() {
        
     }
 
-     const handleDemoAppClick = () => {
-    setValues({
-      ...values,
-      email: 'username@gmail.com',
-      password: 'qwertyu',
-    });
-  };
+    const submit = () => {
+        onSubmit({ preventDefault: () => {} });
+    }
 
+const [isFormReady, setIsFormReady] = useState(false);
+
+  useEffect(() => {
+    if (isFormReady) {
+    
+    onSubmit({ preventDefault: () => {} });
+    }
+  }, [isFormReady]);
+
+    const  handleDemoAppClick = async(e) => {
+        // e.preventDefault()
+         setValues({
+          ...values,
+          email: 'username@gmail.com',
+          password: 'qwertyu',
+        });
+
+        // onSubmit({ preventDefault: () => {} });
+        // const form = document.getElementById('register-form');
+        // form.submit();
+
+        //  await setTimeout(()=>{
+        //   submit()
+
+        // }, 5000)
+
+        setIsFormReady(true);
+
+      };
 
    
 
@@ -105,7 +130,7 @@ export default function Register() {
 
     
 
-   <form className='form' onSubmit={onSubmit}>
+   <form className='form' id='register-form' onSubmit={onSubmit}>
 
     <Logo/>
     
@@ -114,19 +139,20 @@ export default function Register() {
 
     {showAlert && <Alert/>}
 
-    <FormRow type='email' name = 'email' value={values.value} handleChange = {handleChange} placeholder = 'username@gmail.com'/>
+    <FormRow type='email' name = 'email' value={values.email} handleChange = {handleChange} placeholder = 'username@gmail.com'/>
 
      {!(values.isMember) && <FormRow type='text' name = 'name' value={values.value} handleChange = {handleChange} />} {/*// EMAIL WALA SECTION TBHI DIKHEGA JBB LOGGED IN NHI HOGA, MTLB*/ }
 
-    <FormRow type='password' name = 'password' value={values.value} handleChange = {handleChange} placeholder = 'qwertyu' />
+    <FormRow type='password' name = 'password' value={values.password} handleChange = {handleChange} placeholder = 'qwertyu'/>
 
    
 
     <button type='submit' className='btn btn-block' disabled = {isLoading}>submit</button>
+
+    <button type='button' className='btn btn-block btn-hipster' disabled = {isLoading} onClick={handleDemoAppClick}> Demo App </button>
         
-     <button type='button' className='btn' disabled = {isLoading}> For Demo (email: Test@Gmail.com) style={{width: '100%'}}  </button>
-        
-       <button type='button' className='btn btn-block btn-hipster' disabled = {isLoading} onClick={handleDemoAppClick}> Demo App </button>
+     {/* <button type='button' className='btn' disabled = {isLoading} style={{width: '100%' } }> For Demo (password: Jobify) </button> */}
+
     <p>
      {values.isMember ? 'Not a member yet !?' : 'Already a member !?'}      {/* // YE BUTTON KE NEECHE KA SAJO SAMAN BNANE KE LIYE*/}
      <button type='button' onClick={toggleMember} className='member-btn'>
