@@ -76,6 +76,15 @@ export default function Register() {
        
     }
 
+     const handleDemoAppClick = () => {
+    setValues({
+      ...values,
+      email: 'username@gmail.com',
+      password: 'qwertyu',
+    });
+  };
+
+
    
 
 
@@ -117,7 +126,7 @@ export default function Register() {
         
      <button type='button' className='btn' disabled = {isLoading}> For Demo (email: Test@Gmail.com) style={{width: '100%'}}  </button>
         
-        <button type='button' className='btn' disabled = {isLoading} style={{width: '100%'}}> For Demo (password: Jobify) </button>
+       <button type='button' className='btn btn-block btn-hipster' disabled = {isLoading} onClick={handleDemoAppClick}> Demo App </button>
     <p>
      {values.isMember ? 'Not a member yet !?' : 'Already a member !?'}      {/* // YE BUTTON KE NEECHE KA SAJO SAMAN BNANE KE LIYE*/}
      <button type='button' onClick={toggleMember} className='member-btn'>
