@@ -114,7 +114,9 @@ export default function Register() {
    
 
     <button type='submit' className='btn btn-block' disabled = {isLoading}>submit</button>
+        
      <button type='button' className='btn' disabled = {isLoading}> For Demo (email: Test@Gmail.com)</button>
+        
         <button type='button' className='btn' disabled = {isLoading}> For Demo (password: Jobify)</button>
     <p>
      {values.isMember ? 'Not a member yet !?' : 'Already a member !?'}      {/* // YE BUTTON KE NEECHE KA SAJO SAMAN BNANE KE LIYE*/}
