@@ -115,6 +115,8 @@ export default function Register() {
 
     <button type='submit' className='btn btn-block' disabled = {isLoading}>submit</button>
 
+     <button type='button' className='btn btn-block btn-hipster' disabled = {isLoading} OnClick={()=>{ setValues({...values, email: 'testUser@test.com', password: 'jobify'})}}> Demo App </button>
+
     <p>
      {values.isMember ? 'Not a member yet !?' : 'Already a member !?'}      {/* // YE BUTTON KE NEECHE KA SAJO SAMAN BNANE KE LIYE*/}
      <button type='button' onClick={toggleMember} className='member-btn'>
