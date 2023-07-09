@@ -60,7 +60,7 @@ export default function Register() {
          name = (user === null) ? null : user.name;
        }
        
-       const currentUser = {name, email, password};
+       let currentUser = {name, email, password};
 
        if(isMember){
         console.log('already a member')
@@ -105,7 +105,7 @@ export default function Register() {
 
     {showAlert && <Alert/>}
 
-    <FormRow type='email' name = 'email' value={values.value} handleChange = {handleChange} />
+    <FormRow type='email' name = 'email' value={values.value} handleChange = {handleChange}/>
 
      {!(values.isMember) && <FormRow type='text' name = 'name' value={values.value} handleChange = {handleChange} />} {/*// EMAIL WALA SECTION TBHI DIKHEGA JBB LOGGED IN NHI HOGA, MTLB*/ }
 
@@ -114,6 +114,11 @@ export default function Register() {
    
 
     <button type='submit' className='btn btn-block' disabled = {isLoading}>submit</button>
+
+    <button type='button' className='btn btn-block btn-hipster'>Demo Ap</button>
+
+
+    
 
     <p>
      {values.isMember ? 'Not a member yet !?' : 'Already a member !?'}      {/* // YE BUTTON KE NEECHE KA SAJO SAMAN BNANE KE LIYE*/}
