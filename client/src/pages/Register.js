@@ -105,16 +105,16 @@ export default function Register() {
 
     {showAlert && <Alert/>}
 
-    <FormRow type='email' name = 'email' value={values.value} handleChange = {handleChange}/>
+    <FormRow type='email' name = 'email' value={values.value} handleChange = {handleChange} placeholder = 'username@gmail.com'/>
 
      {!(values.isMember) && <FormRow type='text' name = 'name' value={values.value} handleChange = {handleChange} />} {/*// EMAIL WALA SECTION TBHI DIKHEGA JBB LOGGED IN NHI HOGA, MTLB*/ }
 
-    <FormRow type='password' name = 'password' value={values.value} handleChange = {handleChange} />
+    <FormRow type='password' name = 'password' value={values.value} handleChange = {handleChange} placeholder = 'qwertyu' />
 
    
 
     <button type='submit' className='btn btn-block' disabled = {isLoading}>submit</button>
-     <button type='button' className='btn btn-block btn-hipster' disabled = {isLoading}> For Demo (email:username@gmail.com; password:qwertyu)</button>
+     <button type='button' className='btn' disabled = {isLoading}> For Demo (email:username@gmail.com; password:qwertyu)</button>
     <p>
      {values.isMember ? 'Not a member yet !?' : 'Already a member !?'}      {/* // YE BUTTON KE NEECHE KA SAJO SAMAN BNANE KE LIYE*/}
      <button type='button' onClick={toggleMember} className='member-btn'>
