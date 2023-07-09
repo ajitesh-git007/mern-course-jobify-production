@@ -4,6 +4,9 @@ const app = express()
 import dotenv from 'dotenv'
 dotenv.config()
 import morgan from 'morgan'
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
+import path from 'path'
 
 // db and authenticateUser
 import connectDB from './db/connect.js'
@@ -19,7 +22,11 @@ import NotFoundMiddleware from './middleware/not-found.js'
 import errorHandleMiddleware from './middleware/error-handler.js'
 import authenticateUser from './middleware/auth.js'
 
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
 app.use(express.json())
+
+app.use(express.static(path.resolve(__dirname, './client/build')))
 
 if(process.env.NODE_ENV !== 'production'){
     app.use(morgan('dev'))
@@ -31,6 +38,10 @@ const port = process.env.PORT || 5000
 app.use('/api/v1/auth', authRouter)
 
 app.use('/api/v1/jobs', authenticateUser, jobsRouter)
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
+  });
 
 
 app.get('/', (req, res)=>{
